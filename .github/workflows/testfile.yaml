@@ -1,6 +1,6 @@
 name: Lint Code Base
 
-on: push
+on: [push, pull_request]
 
 jobs:
   build:
@@ -10,9 +10,15 @@ jobs:
     steps:
 
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       - name: Lint Code Base
         uses: github/super-linter@v4
         env:
-         DEFAULT_BRANCH: main
-         GIHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_JAVASCRIPT_ES: true
+          VALIDATE_PYTHON_BLACK: true
+          VALIDATE_HTML: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
