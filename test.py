@@ -1,7 +1,2 @@
-def greet(name):
-    print ('Hello', name)
-
-    
-greet('Jack')
-greet('Jill')
-greet('Bob')
+print("hellow prashant")
+print("Releaseowl")
